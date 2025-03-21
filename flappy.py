@@ -8,8 +8,8 @@ Exercises
 4. Allow the bird to move forward and back.
 """
 
-from random import *
-from turtle import *
+import random
+import turtle
 
 from freegames import vector
 
@@ -30,20 +30,20 @@ def inside(point):
 
 def draw(alive):
     """Draw screen objects."""
-    clear()
+    turtle.clear()
 
-    goto(bird.x, bird.y)
+    turtle.goto(bird.x, bird.y)
 
     if alive:
-        dot(10, 'green')
+        turtle.dot(10, 'green')
     else:
-        dot(10, 'red')
+        turtle.dot(10, 'red')
 
     for ball in balls:
-        goto(ball.x, ball.y)
-        dot(20, 'black')
+        turtle.goto(ball.x, ball.y)
+        turtle.dot(20, 'black')
 
-    update()
+    turtle.update()
 
 
 def move():
@@ -53,8 +53,8 @@ def move():
     for ball in balls:
         ball.x -= 3
 
-    if randrange(10) == 0:
-        y = randrange(-199, 199)
+    if random.randrange(10) == 0:
+        y = random.randrange(-199, 199)
         ball = vector(199, y)
         balls.append(ball)
 
@@ -71,13 +71,13 @@ def move():
             return
 
     draw(True)
-    ontimer(move, 50)
+    turtle.ontimer(move, 50)
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-up()
-tracer(False)
-onscreenclick(tap)
-move()
-done()
+turtle.setup(420, 420, 370, 0)
+turtle.hideturtle()
+turtle.up()
+turtle.tracer(False)
+turtle.onscreenclick(tap)
+turtle.move()
+turtle.done()
